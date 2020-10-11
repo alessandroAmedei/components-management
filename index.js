@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const helmet = require("helmet");
 const cors = require("cors");
 const db = require("./db");
-const object = require("./schemas/Object");
+const objectModel = require("./schemas/Object");
 
 const app = express();
 const port = process.env.PORT || 6500;
@@ -21,8 +21,9 @@ app.get("/api/objects", (req, res) => {
 
 app.post("/api/objects", (req, res) => {
   let body = req.body;
-  let objectModel = new Object({ body });
-  objectModel.save((err, document) => {
+  console.log(body);
+  let obj = new objectModel(body);
+  obj.save((err, document) => {
     if (err) res.status(500).json(err);
     res.json(document);
   });
