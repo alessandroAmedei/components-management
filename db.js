@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
+
 mongoose.connect(
-  "mongodb://admin:CKImih94798@95.110.177.2:27017",
+  process.env.DB_URL,
   { useUnifiedTopology: true, useNewUrlParser: true },
   (err, db) => {
     if (!err) {
