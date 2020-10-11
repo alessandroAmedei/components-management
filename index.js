@@ -21,8 +21,8 @@ app.get("/api/objects", (req, res) => {
 
 app.post("/api/objects", (req, res) => {
   let body = req.body;
-  let object = new Object({ body });
-  object.save((err, document) => {
+  let objectModel = new Object({ body });
+  objectModel.save((err, document) => {
     if (err) res.status(500).json(err);
     res.json(document);
   });
