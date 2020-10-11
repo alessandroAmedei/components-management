@@ -5,6 +5,10 @@ mongoose.connect(
   (err, db) => {
     if (!err) {
       console.log("connected!");
-    } else console.log("error");
+    } else {
+      console.log("error");
+    }
   }
 );
+
+module.exports = mongoose;
