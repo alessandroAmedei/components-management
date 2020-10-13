@@ -48,6 +48,15 @@ app.delete("/api/objects/reset", (req, res) => {
   });
 });
 
+app.put("/api/objects", (req, res) => {
+  objectModel.updateOne({ _id: req.body.id }, (err) => {
+    if (err) res.status(500).json(err);
+    res.json({
+      deleted: "ok",
+    });
+  });
+});
+
 app.listen(port, () => {
   console.log(`App is listening on port: ${port}`);
 });
